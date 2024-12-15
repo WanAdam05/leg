@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leg Workout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: white;
+            --text-color: #333;
+            --border-color: #eee;
+            --secondary-text: #666;
+            --accent-color: #ff466b;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: var(--bg-color);
+        }
+
+        .header-image {
+            position: relative;
+            height: 250px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                            url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            color: white;
+            z-index: 1;
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .workout-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .countdown-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .countdown {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 10px 0;
+        }
+
+        .ready-button {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ff466b);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .ready-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ff466b;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 2rem;
+            font-weight: bold;
+            transition: background 0.2s ease;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .back-button:hover {
+            background: #ff6b6b;
+        }
+
+        .next-exercise {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="workout-container">
+        <a href="javascript:history.back()" class="back-button">←</a>
+        <div class="header-image">
+            <div class="header-content">
+                <h1 id="next-exercise">Next: Leg Workout</h1>
+            </div>
+        </div>
+
+        <div class="countdown-section">
+            <p>Get Ready!</p>
+            <div class="countdown" id="countdown">15</div>
+            <button class="ready-button" onclick="startExercise()">Ready!</button>
+        </div>
+    </div>
+
+    <script>
+        let countdownValue = 15;
+        const countdownElement = document.getElementById('countdown');
+
+        const countdownInterval = setInterval(() => {
+            countdownValue--;
+            countdownElement.textContent = countdownValue;
+            if (countdownValue <= 0) {
+                clearInterval(countdownInterval);
+                startExercise();
+            }
+        }, 1000);
+
+        function startExercise() {
+            window.location.href = 'bodyweight_march.html'; // Redirect to Bodyweight March page
+        }
+    </script>
+</body>
+</html> 
